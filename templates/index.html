@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalMind AI - O'zbekiston Yuridik Platforma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --secondary-color: #28a745;
+            --secondary-dark: #1e7e34;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            opacity: 0.95;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        #start-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 450px;
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border-radius: 16px;
+            animation: slideInDown 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        #start-screen h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        #start-screen p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            font-size: clamp(0.9rem, 2vw, 1.05rem);
+        }
+
+        .start-btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+            background-color: var(--secondary-dark);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-start {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-detail {
+            background-color: var(--primary-color);
+        }
+
+        .btn-detail:hover {
+            background-color: var(--primary-dark);
+        }
+
+        #main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-button {
+            flex-shrink: 0;
+            padding: 0.875rem 1.5rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            background-color: #e2e8f0;
+            color: var(--text-color);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            background-color: #cbd5e1;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-dark);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        input:not([type="file"]),
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.875rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--text-color);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .output-box {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid var(--border-color);
+            background-color: #f7fafc;
+            border-radius: 12px;
+            white-space: pre-wrap;
+            min-height: 120px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .loading {
+            color: var(--primary-color);
+            font-weight: 600;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .notary-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .notary-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .notary-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .notary-table tr:hover td {
+            background-color: #f6faff;
+        }
+
+        .notary-table td:first-child {
+            width: 35%;
+            background-color: #eef2ff;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-button {
+                width: 100%;
+            }
+
+            .start-btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-start,
+            .btn-detail {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>LegalMind AI 💡</h1>
+        <p>Zamonaviy Yuridik AI Yordamchisi</p>
+    </header>
+
+    <div class="container">
+        <div id="start-screen">
+            <h2>LegalMind AI Xizmatlariga Xush Kelibsiz!</h2>
+            <p>Bizning AI platformamiz O'zbekiston yurisprudensiyasi bo'yicha hujjatlar generatsiyasi, risk tahlili va
+                savollarga aniq javob berishda yordam beradi. Tez, Ishonchli va Zamonaviy yechim.</p>
+            <div class="start-btn-group">
+                <button class="btn btn-start" onclick="startApp()">🚀 Boshlash</button>
+                <button class="btn btn-detail" onclick="showDetails()">ℹ️ Batafsil</button>
+            </div>
+        </div>
+
+        <div id="main-content">
+            <div class="tabs">
+                <button class="tab-button active" onclick="openService(event, 'generator')">📝 Hujjat Generator</button>
+                <button class="tab-button" onclick="openService(event, 'risk')">⚠️ Risk-Analiz</button>
+                <button class="tab-button" onclick="openService(event, 'chat')">💬 Legal Chat</button>
+                <button class="tab-button" onclick="openService(event, 'notary')">🏛️ Notarius</button>
+            </div>
+
+            <div id="generator" class="tab-content active">
+                <h2>Hujjat Generatsiyasi</h2>
+                <p class="label">Hujjat turi:</p>
+                <select id="doc_type">
+                    <option value="Shartnoma">Shartnoma</option>
+                    <option value="Ariza">Ariza</option>
+                    <option value="Ishonchnoma">Ishonchnoma</option>
+                </select>
+                <p class="label">Mijoz Ma'lumotlari:</p>
+                <input type="text" id="client_info" placeholder="Masalan: MCHJ 'Ipak Yo'li' va Fuqaro A">
+                <button class="btn" onclick="runGenerator()">Hujjatni Generatsiya Qilish</button>
+                <div id="generator_output" class="output-box">Natija: Generatsiya qilingan hujjat matni shu yerda
+                    ko'rinadi.</div>
+            </div>
+
+            <div id="risk" class="tab-content">
+                <h2>Risk-Analiz (Demo)</h2>
+                <p class="label">Tekshirish uchun hujjat faylini yuklang:</p>
+                <input type="file" id="contract_file">
+                <button class="btn" onclick="runRiskAnalysis()">Hujjatni Tahlil Qilish</button>
+                <div id="risk_output" class="output-box">Natija: Aniqlangan risklar shu yerda ko'rinadi.</div>
+            </div>
+
+            <div id="chat" class="tab-content">
+                <h2>AI Yuridik Chat</h2>
+                <p class="label">Yuridik savolingizni kiriting:</p>
+                <input type="text" id="chat_question" placeholder="Masalan: Ishdan bo'shatish tartibi qanday?"
+                    onkeyup="if(event.key==='Enter') runChat()">
+                <button class="btn" onclick="runChat()">AI Javob Olish</button>
+                <div id="chat_output" class="output-box">AI Javobi shu yerda ko'rinadi.</div>
+            </div>
+
+            <div id="notary" class="tab-content">
+                <h2>Notarius Qidiruvi</h2>
+                <p class="label">Viloyat yoki shaharni tanlang:</p>
+                <select id="notary_location_select">
+                    <option value="">--- Viloyat/Shaharni tanlang ---</option>
+                    <optgroup label="Qoraqalpog'iston">
+                        <option value="kar">Nukus shahri</option>
+                        <option value="kar_beruniy">Beruniy tumani</option>
+                        <option value="kar_chimboy">Chimboy tumani</option>
+                        <option value="kar_qongirot">Qo'ng'irot tumani</option>
+                        <option value="kar_kegeyli">Kegeyli tumani</option>
+                        <option value="kar_qoraoзak">Qorao'zak tumani</option>
+                        <option value="kar_moynoq">Mo'ynoq tumani</option>
+                        <option value="kar_shumanay">Shumanay tumani</option>
+                        <option value="kar_taxtakopir">Taxtako'pir tumani</option>
+                        <option value="kar_tortkol">To'rtko'l tumani</option>
+                        <option value="kar_xojayli">Xo'jayli tumani</option>
+                        <option value="kar_ellikqala">Ellikqal'a tumani</option>
+                        <option value="kar_amudaryo">Amudaryo tumani</option>
+                    </optgroup>
+                    <optgroup label="Boshqa viloyatlar">
+                        <option value="tash">Toshkent shahri</option>
+                        <option value="and">Andijon viloyati</option>
+                        <option value="sam">Samarqand viloyati</option>
+                        <option value="bux">Buxoro viloyati</option>
+                        <option value="nam">Namangan viloyati</option>
+                        <option value="fer">Farg'ona viloyati</option>
+                        <option value="jiz">Jizzax viloyati</option>
+                        <option value="nav">Navoiy viloyati</option>
+                        <option value="qash">Qashqadaryo viloyati</option>
+                        <option value="sur">Surxondaryo viloyati</option>
+                        <option value="sir">Sirdaryo viloyati</option>
+                        <option value="xor">Xorazm viloyati</option>
+                    </optgroup>
+                </select>
+                <button class="btn" onclick="runNotarySearch()">Ma'lumotlarni Qidirish</button>
+                <div id="notary_output" class="output-box">Natija: Eng yaqin notarius ma'lumotlari shu yerda ko'rinadi.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock data - this is just for fallback, the real data comes from the backend
+        const NOTARY_DATA = {
+            "kar": {
+                "nearest": "Nukus shahri 1-son Davlat Notarial idorasi",
+                "wait_time": "15 daqiqa (Taxminiy)",
+                "state_fee": "Bazaviy xizmat 12 000 so'm"
+            },
+            "tash": {
+                "nearest": "Toshkent shahri Yakkasaroy Notarius idorasi",
+                "wait_time": "12 daqiqa (Taxminiy)",
+                "state_fee": "Bazaviy xizmat 12 000 so'm"
+            },
+            "and": {
+                "nearest": "Andijon shahri 5-son Davlat Notarial idorasi",
+                "wait_time": "20 daqiqa (Taxminiy)",
+                "state_fee": "Bazaviy xizmat 11 000 so'm"
+            }
+        };
+
+        // Legal keywords for validation
+        const LEGAL_KEYWORDS = [
+            'shartnoma', 'huquq', 'majburiyat', 'mulk', 'meros', 'ish', 'ishdan',
+            'bo\'shatish', 'mehnat', 'sud', 'qonun', 'kodeks', 'fuqaro', 'yuridik',
+            'notarius', 'davlat', 'ariza', 'shikoyat', 'da\'vo', 'jarima', 'jazo',
+            'ko\'chmas', 'mol-mulk', 'uy-joy', 'er', 'ijara', 'kredit', 'qarz',
+            'to\'lov', 'pul', 'vakillik', 'ishonchnoma', 'guvohnoma', 'litsenziya'
+        ];
+
+        function isLegalQuestion(question) {
+            const lowerQuestion = question.toLowerCase();
+            return LEGAL_KEYWORDS.some(keyword => lowerQuestion.includes(keyword));
+        }
+
+        function showResult(element, content) {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                element.innerHTML = content;
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, 100);
+        }
+
+        function openService(evt, serviceName) {
+            const activeContent = document.querySelector(".tab-content.active");
+            if (activeContent) {
+                activeContent.style.opacity = '0';
+                setTimeout(() => {
+                    activeContent.classList.remove("active");
+                }, 100);
+            }
+
+            document.querySelectorAll(".tab-button").forEach(el => el.classList.remove("active"));
+
+            const nextContent = document.getElementById(serviceName);
+            setTimeout(() => {
+                nextContent.classList.add("active");
+                nextContent.style.opacity = '1';
+                evt.currentTarget.classList.add("active");
+            }, 100);
+        }
+
+        function startApp() {
+            document.getElementById('start-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('start-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('main-content').style.opacity = '1';
+                }, 50);
+            }, 300);
+        }
+
+        function showDetails() {
+            const output = document.getElementById('start-screen');
+            const detailText = `
+                <h2>ℹ️ LegalMind AI haqida batafsil ma'lumot:</h2>
+                <p>Ushbu platforma O'zbekiston Respublikasi qonunchiligi asosida ishlaydigan quyidagi funksiyalarni taqdim etadi:</p>
+                <ul style="text-align: left; max-width: 600px; margin: 20px auto; line-height: 2;">
+                    <li><strong style="color: var(--primary-color);">📝 Hujjat Generatsiyasi:</strong> Shartnoma, ariza kabi yuridik hujjat shablonlarini AI yordamida tezda yaratish.</li>
+                    <li><strong style="color: var(--primary-color);">⚠️ Risk-Analiz:</strong> Yuklangan hujjatlardagi yuridik risklarni va noaniqliklarni tahlil qilish.</li>
+                    <li><strong style="color: var(--primary-color);">💬 Legal Chat:</strong> O'zbek tilida yuridik savollaringizga aniq va sodda javob olish.</li>
+                    <li><strong style="color: var(--primary-color);">🏛️ Notarius Qidiruvi:</strong> Tanlangan viloyatlar bo'yicha ma'lumot.</li>
+                </ul>
+                <p style="margin-top: 30px;">Xizmatlardan foydalanish uchun <strong>"🚀 Boshlash"</strong> tugmasini bosing.</p>
+                <div class="start-btn-group">
+                    <button class="btn btn-start" onclick="startApp()">🚀 Boshlash</button>
+                    <button class="btn btn-detail" onclick="hideDetails()">Ortga qaytish</button>
+                </div>
+            `;
+            output.innerHTML = detailText;
+        }
+
+        function hideDetails() {
+            const output = document.getElementById('start-screen');
+            output.style.opacity = '0';
+            setTimeout(() => {
+                output.innerHTML = `
+                    <h2>LegalMind AI Xizmatlariga Xush Kelibsiz!</h2>
+                    <p>Bizning AI platformamiz O'zbekiston yurisprudensiyasi bo'yicha hujjatlar generatsiyasi, risk tahlili va savollarga aniq javob berishda yordam beradi. Tez, Ishonchli va Zamonaviy yechim.</p>
+                    <div class="start-btn-group">
+                        <button class="btn btn-start" onclick="startApp()">🚀 Boshlash</button>
+                        <button class="btn btn-detail" onclick="showDetails()">ℹ️ Batafsil</button>
+                    </div>
+                `;
+                output.style.opacity = '1';
+            }, 300);
+        }
+
+        function runGenerator() {
+            const output = document.getElementById('generator_output');
+            output.innerHTML = '<span class="loading">Yuklanmoqda...</span>';
+            const clientInfo = document.getElementById('client_info').value || 'Noma\'lum Mijoz';
+            const docType = document.getElementById('doc_type').value;
+
+            // Call the backend API
+            fetch('/api/generate-document', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    type: docType,
+                    client: clientInfo
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        showResult(output, `<b>Generatsiya Muvaffaqiyatli!</b><hr>${data.document.replace(/\n/g, '<br>')}`);
+                    } else {
+                        showResult(output, `<b>Xatolik:</b> ${data.message}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Fallback to mock if backend fails
+                    setTimeout(() => {
+                        const mockDocument = `
+${docType.toUpperCase()}
+
+Tomonlar: ${clientInfo}
+
+1. Umumiy qoidalar
+Ushbu ${docType.toLowerCase()} O'zbekiston Respublikasi qonunchiligiga muvofiq tuzilgan.
+
+2. Tomonlarning huquq va majburiyatlari
+2.1. Birinchi tomon majburiyatlari...
+2.2. Ikkinchi tomon majburiyatlari...
+
+3. Javobgarlik
+Tomonlar ushbu ${docType.toLowerCase()} shartlarini buzgan taqdirda O'zbekiston Respublikasi qonunchiligiga muvofiq javobgar bo'ladilar.
+
+4. Yakuniy qoidalar
+Ushbu ${docType.toLowerCase()} ikki nusxada tuzilgan va har bir tomon uchun bir nusxadan berilgan.
+
+Sana: ${new Date().toLocaleDateString('uz-UZ')}
+
+Imzolar:
+_______________ (Birinchi tomon)
+_______________ (Ikkinchi tomon)
+                    `;
+                        showResult(output, `<b>Generatsiya Muvaffaqiyatli (Offline)!</b><hr>${mockDocument}`);
+                    }, 1000);
+                });
+            document.getElementById('client_info').value = '';
+        }
+
+        function runRiskAnalysis() {
+            const output = document.getElementById('risk_output');
+            const fileInput = document.getElementById('contract_file');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                showResult(output, 'Iltimos, avval fayl tanlang.');
+                return;
+            }
+
+            output.innerHTML = '<span class="loading">Fayl yuklanmoqda va tahlil qilinmoqda...</span>';
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/api/risk-analysis', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const riskList = data.risks.map(r => `<li>${r}</li>`).join('');
+                        showResult(output, `<b>Tahlil Natijasi: ${data.fileName}</b><hr><ul style="text-align: left; padding-left: 20px;">${riskList}</ul>`);
+                    } else {
+                        showResult(output, `<b>Xatolik:</b> ${data.message}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Fallback
+                    setTimeout(() => {
+                        const mockRisks = [
+                            "Band 3: Noaniq majburiyatlar - Tomonlarning aniq majburiyatlari ko'rsatilmagan.",
+                            "Band 7: Bir tomonlama jarima - Faqat bir tomon uchun jarima belgilangan.",
+                            "Band 9: Majburiyatni bajarmaslik uchun jazo yozilmagan."
+                        ];
+                        const riskList = mockRisks.map(r => `<li>${r}</li>`).join('');
+                        showResult(output, `<b>Tahlil Natijasi (Offline): ${file.name}</b><hr><ul style="text-align: left; padding-left: 20px;">${riskList}</ul>`);
+                    }, 2000);
+                });
+        }
+
+        function runChat() {
+            const output = document.getElementById('chat_output');
+            const questionElement = document.getElementById('chat_question');
+            const question = questionElement.value.trim();
+
+            if (!question) {
+                showResult(output, 'Iltimos, savolingizni kiriting.');
+                return;
+            }
+
+            output.innerHTML = '<span class="loading">AI javob izlamoqda...</span>';
+
+            // CRITICAL: Legal question validation
+            if (!isLegalQuestion(question)) {
+                showResult(output, `<b>⚠️ Cheklangan So'rov</b><hr>Kechirasiz, men faqat insonlar va boshqa subyektlarning yuridik huquqlari hamda majburiyatlari haqida ma'lumot bera olaman. Iltimos, yuridik savol bilan murojaat qiling.`);
+                questionElement.value = '';
+                return;
+            }
+
+            fetch('/api/legal-chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    question: question
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    showResult(output, `<b>AI Yurist (Javob):</b><hr>${data.answer.replace(/\n/g, '<br>')}`);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Fallback
+                    setTimeout(() => {
+                        const mockResponse = `O'zbekiston Respublikasi qonunchiligiga ko'ra, "${question}" savoliga quyidagicha javob berish mumkin:
+
+Mehnat kodeksining tegishli moddalari asosida, ishdan bo'shatish qat'iy tartibda amalga oshirilishi kerak. Ishchi o'z huquqlarini himoya qilish uchun mehnat inspeksiyasiga yoki sudga murojaat qilishi mumkin.
+
+Batafsil ma'lumot olish uchun yuridik maslahatchi bilan bog'laning.`;
+                        showResult(output, `<b>AI Yurist (Javob - Offline):</b><hr>${mockResponse}`);
+                    }, 1500);
+                });
+            questionElement.value = '';
+        }
+
+        function runNotarySearch() {
+            const output = document.getElementById('notary_output');
+            const selectElement = document.getElementById('notary_location_select');
+            const locationCode = selectElement.value;
+
+            if (!locationCode) {
+                showResult(output, 'Iltimos, avval viloyat yoki shaharni tanlang.');
+                return;
+            }
+
+            output.innerHTML = '<span class="loading">Notariuslarni qidirmoqda...</span>';
+
+            fetch('/api/notary', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    location: locationCode
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const selectedText = selectElement.options[selectElement.selectedIndex].text;
+                    const tableHtml = `
+                    <b>${selectedText} uchun ma'lumot:</b>
+                    <table class="notary-table">
+                        <tr><td>Eng yaqin idora:</td><td><b>${data.nearest}</b></td></tr>
+                        <tr><td>Taxminiy Kutish vaqti:</td><td>${data.wait_time}</td></tr>
+                        <tr><td>Bazaviy Davlat Boji:</td><td>${data.state_fee}</td></tr>
+                    </table>
+                `;
+                    showResult(output, tableHtml);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Fallback
+                    setTimeout(() => {
+                        const data = NOTARY_DATA[locationCode] || NOTARY_DATA['tash'];
+                        const selectedText = selectElement.options[selectElement.selectedIndex].text;
+                        const tableHtml = `
+                        <b>${selectedText} uchun ma'lumot (Offline):</b>
+                        <table class="notary-table">
+                            <tr><td>Eng yaqin idora:</td><td><b>${data.nearest}</b></td></tr>
+                            <tr><td>Taxminiy Kutish vaqti:</td><td>${data.wait_time}</td></tr>
+                            <tr><td>Bazaviy Davlat Boji:</td><td>${data.state_fee}</td></tr>
+                        </table>
+                    `;
+                        showResult(output, tableHtml);
+                    }, 1000);
+                });
+            selectElement.value = "";
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('main-content').style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

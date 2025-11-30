@@ -1,0 +1,160 @@
+{
+  "notary_info": {
+    "kar": {
+      "nearest": "Nukus shahri 1-son Davlat Notarial idorasi",
+      "wait_time": "15 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 12 000 so'm (Qoraqalpog'iston)"
+    },
+    "kar_beruniy": {
+      "nearest": "Beruniy tumani Davlat Notarial idorasi",
+      "wait_time": "18 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Beruniy)"
+    },
+    "kar_chimboy": {
+      "nearest": "Chimboy tumani Davlat Notarial idorasi",
+      "wait_time": "17 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Chimboy)"
+    },
+    "kar_qongirot": {
+      "nearest": "Qo'ng'irot tumani Davlat Notarial idorasi",
+      "wait_time": "19 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Qo'ng'irot)"
+    },
+    "kar_kegeyli": {
+      "nearest": "Kegeyli tumani Davlat Notarial idorasi",
+      "wait_time": "20 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Kegeyli)"
+    },
+    "kar_qoraoзak": {
+      "nearest": "Qorao'zak tumani Davlat Notarial idorasi",
+      "wait_time": "21 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Qorao'zak)"
+    },
+    "kar_moynoq": {
+      "nearest": "Mo'ynoq tumani Davlat Notarial idorasi",
+      "wait_time": "22 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Mo'ynoq)"
+    },
+    "kar_shumanay": {
+      "nearest": "Shumanay tumani Davlat Notarial idorasi",
+      "wait_time": "20 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Shumanay)"
+    },
+    "kar_taxtakopir": {
+      "nearest": "Taxtako'pir tumani Davlat Notarial idorasi",
+      "wait_time": "19 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Taxtako'pir)"
+    },
+    "kar_tortkol": {
+      "nearest": "To'rtko'l tumani Davlat Notarial idorasi",
+      "wait_time": "18 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (To'rtko'l)"
+    },
+    "kar_xojayli": {
+      "nearest": "Xo'jayli tumani Davlat Notarial idorasi",
+      "wait_time": "17 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Xo'jayli)"
+    },
+    "kar_ellikqala": {
+      "nearest": "Ellikqal'a tumani Davlat Notarial idorasi",
+      "wait_time": "20 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Ellikqal'a)"
+    },
+    "kar_amudaryo": {
+      "nearest": "Amudaryo tumani Davlat Notarial idorasi",
+      "wait_time": "21 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Amudaryo)"
+    },
+    "tash": {
+      "nearest": "Toshkent shahri Yakkasaroy Notarius idorasi (Markaziy)",
+      "wait_time": "12 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 500 so'm (Toshkent Shahri)"
+    },
+    "and": {
+      "nearest": "Andijon shahri 5-son Davlat Notarial idorasi",
+      "wait_time": "20 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Andijon)"
+    },
+    "sam": {
+      "nearest": "Samarqand shahri 3-son Davlat Notarial idorasi",
+      "wait_time": "18 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 500 so'm (Samarqand)"
+    },
+    "bux": {
+      "nearest": "Buxoro shahri Markaziy Davlat Notarial idorasi",
+      "wait_time": "16 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Buxoro)"
+    },
+    "nam": {
+      "nearest": "Namangan shahri 2-son Davlat Notarial idorasi",
+      "wait_time": "19 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Namangan)"
+    },
+    "fer": {
+      "nearest": "Farg'ona shahri 4-son Davlat Notarial idorasi",
+      "wait_time": "17 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Farg'ona)"
+    },
+    "jiz": {
+      "nearest": "Jizzax shahri 1-son Davlat Notarial idorasi",
+      "wait_time": "14 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Jizzax)"
+    },
+    "nav": {
+      "nearest": "Navoiy shahri Markaziy Davlat Notarial idorasi",
+      "wait_time": "15 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Navoiy)"
+    },
+    "qash": {
+      "nearest": "Qarshi shahri 2-son Davlat Notarial idorasi",
+      "wait_time": "16 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Qashqadaryo)"
+    },
+    "sur": {
+      "nearest": "Termiz shahri 1-son Davlat Notarial idorasi",
+      "wait_time": "17 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Surxondaryo)"
+    },
+    "sir": {
+      "nearest": "Guliston shahri Markaziy Davlat Notarial idorasi",
+      "wait_time": "14 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 10 500 so'm (Sirdaryo)"
+    },
+    "xor": {
+      "nearest": "Urganch shahri 1-son Davlat Notarial idorasi",
+      "wait_time": "15 daqiqa (Taxminiy)",
+      "state_fee": "Bazaviy xizmat 11 000 so'm (Xorazm)"
+    },
+    "default": {
+      "nearest": "Tanlangan hudud bo'yicha ma'lumot topilmadi.",
+      "wait_time": "—",
+      "state_fee": "—"
+    }
+  },
+  "quick_answers": {
+    "oldi_sotdi": {
+      "title": "Oldi-sotdi shartnomasi:",
+      "answer": "Oldi-sotdi shartnomasi boʻyicha bir taraf (sotuvchi) tovarni boshqa taraf (sotib oluvchi)ga mulk qilib topshirish majburiyatini, sotib oluvchi esa bu tovarni qabul qilish va uning uchun belgilangan pul summasi (bahosi)ni toʻlash majburiyatini oladi."
+    },
+    "hadya": {
+      "title": "Hadya shartnomasi:",
+      "answer": "Hadya shartnomasiga muvofiq bir taraf (hadya qiluvchi) boshqa taraf (hadya oluvchi)ga ashyoni tekinga mulk qilib beradi yoki berish majburiyatini oladi yoxud unga oʻziga yoki uchinchi shaxsga nisbatan mulk huquqi (talabi)ni beradi yo berish majburiyatini oladi, yoxud uni oʻzi yoki uchinchi shaxs oldidagi mulkiy majburiyatdan ozod qiladi yoinki ozod qilish majburiyatini oladi."
+    },
+    "renta": {
+      "title": "Renta shartnomasi:",
+      "answer": "Renta shartnomasiga muvofiq bir taraf (renta oluvchi) koʻchmas yoki koʻchar mol-mulkni boshqa tarafga (renta toʻlovchiga) mulk qilib beradi, renta toʻlovchi esa olingan mol-mulk oʻrniga renta oluvchiga vaqti-vaqti bilan belgilangan pul summasi yoki uni taʼminlash uchun boshqa shaklda mablagʻ berish tarzida renta toʻlash majburiyatini oladi."
+    },
+    "uy_ijara": {
+      "title": "Uy-joyni ijaraga berish shartnomasi:",
+      "answer": "Uy-joyni ijaraga berish shartnomasiga binoan bir taraf uy-joyning mulkdori yoki u vakolat bergan shaxs (ijaraga beruvchi) boshqa taraf (ijaraga oluvchi)ga uy-joyda yashash uchun uni haq evaziga egalik qilish va foydalanishga topshirish majburiyatini oladi. Uy-joy yuridik shaxslarga ijara shartnomasi yoki boshqa shartnoma asosida egalik qilish va (yoki) foydalanish uchun topshirilishi mumkin. Yuridik shaxs uy-joydan faqat fuqarolarning yashashi uchun foydalanishi mumkin."
+    },
+    "kredit": {
+      "title": "Kredit shartnomasi:",
+      "answer": "Kredit shartnomasi boʻyicha bir taraf — bank yoki boshqa kredit tashkiloti (kreditor) ikkinchi tarafga (qarz oluvchiga) shartnomada nazarda tutilgan miqdorda va shartlar asosida pul mablagʻlari (kredit) berish, qarz oluvchi esa olingan pul summasini qaytarish va uning uchun foizlar toʻlash majburiyatini oladi."
+    },
+    "lizing": {
+      "title": "Lizing shartnomasi:",
+      "answer": "Lizing shartnomasi boʻyicha lizing beruvchi (ijaraga beruvchi) bir taraf lizing oluvchi (ijaraga oluvchi) ikkinchi tarafning topshirigʻiga binoan sotuvchi uchinchi taraf bilan undan lizing oluvchi uchun mol-mulk sotib olish haqida kelishish majburiyatini oladi, lizing oluvchi esa buning uchun lizing beruvchiga lizing toʻlovlarini toʻlash majburiyatini oladi."
+    }
+  }
+}
